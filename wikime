@@ -8,6 +8,8 @@
 # Original author: Christian Brabandt <cb@256bit.org>
 # edited by: Andre ASA
 VERSION=0.14
+SCRIPT_FILE=`basename $0`
+RC_FILE=~/.config/${SCRIPT_FILE}rc
 
 set -e
 
@@ -19,11 +21,11 @@ WIKIME-CLI
     renderizar artigos do WikIME. O resultado será imprimido para a saída padrão
 
 SINOPSE
-    `basename $0` [-BCnNoOpPsSuU] [-b prog] [-c patt] [-i patt] [-l lang]
+    $SCRIPT_FILE [-BCnNoOpPsSuU] [-b prog] [-c patt] [-i patt] [-l lang]
                    [-X browseroptions] query
-    `basename $0` -o [-b prog] [-l lang] query
-    `basename $0` [-h]
-    `basename $0` -v|-r
+    $SCRIPT_FILE -o [-b prog] [-l lang] query
+    $SCRIPT_FILE [-h]
+    $SCRIPT_FILE -v|-r
 
     -n  não use cores            - N  cores simples (alias -C)
     -p  display using a pager    - P  não use PAGER
@@ -50,8 +52,8 @@ SINOPSE
     caracteres especiais. Observe que somente um termo de pesquisa é aceito, mas
     essse termo pode consistir de várias palavras.
 
-    A configuração pode ser controlada criando um arquivo de chamado .`basename $0`rc
-    no seu diretório home.
+    A configuração pode ser controlada criando um arquivo de configuração em
+    $RC_FILE
 
     Observe que quando pedir  para  abrir  o  artigo  em  um  navegador,  outros
     paramêtros serão ignorados. O mesmo vale para as opções -h e -v.
@@ -159,8 +161,8 @@ function filterInfo() {
 }
 
 # First read in the Run configuration File, if one is found #{{{1
-if [ -r ~/.`basename $0`rc ]; then
-  source ~/.`basename $0`rc
+if [ -r ${RC_FILE} ]; then
+  source ${RC_FILE}
   ABROWSER=${BROWSER}
 fi
 
