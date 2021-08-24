@@ -28,7 +28,7 @@ export PATH=$PATH:$HOME/.local/bin
 
 Todas as opções e instruções de uso podem ser exibidas rodando `wikime -h`.
 
-```shell
+```
 WIKIME-CLI
 
     Essa script usa navegadores de internet TUI (terminal UI) para  pesquisar  e
