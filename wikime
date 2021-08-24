@@ -148,12 +148,14 @@ function getInfo() { #{{{1
 
 function filterInfo() {
   pattern='Menu de navegação'
-  sed -n "
+  sed -n \
+  -e '3,5d' \
+  -e "
     1,/$pattern/ {
       /$pattern/n # skipp pattern
       p           # print lines from 1 untill pattern
     }
-  " < /dev/stdin
+  " < /dev/stdin | sed '$d' | sed '$d'
 }
 
 # First read in the Run configuration File, if one is found #{{{1
