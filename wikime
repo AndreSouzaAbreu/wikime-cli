@@ -1,5 +1,5 @@
 #!/bin/bash --
-#
+
 # Shell script to query the WikIME.
 #
 # It can be used to output WikIME articles to the console, but can also
@@ -7,6 +7,7 @@
 # 
 # Original author: Christian Brabandt <cb@256bit.org>
 # edited by: Andre ASA
+
 VERSION=0.14
 SCRIPT_FILE=`basename $0`
 RC_FILE=~/.config/${SCRIPT_FILE}rc
@@ -259,10 +260,12 @@ OUTPUTURL=$(echo ${OUTPUTURL:="false"})
 # Now we do some input sanitizing. {{{1
 ARGUMENT="$(uri_decode "$*")"
 LOCAL="$(echo "${LOCAL}"|tr '[:upper:]' '[:lower:]')"
+
 # Random page?
 if [ "${RAND}" = "true" ]; then
   ARGUMENT="$(uri_decode "${RANDOMP}")"
 fi
+
 if [ -z "${URL}" ]; then
   URL="http://wikime.linux.ime.usp.br/index.php/${ARGUMENT}"
 fi
